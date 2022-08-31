@@ -19,7 +19,7 @@ public class Customer {
     private String lastName;
     @Column(name="identificationNumber", unique = true)
     private Long identificationNumber;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Order> orderList = new ArrayList<>();
 

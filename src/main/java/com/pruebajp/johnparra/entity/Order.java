@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name="order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_order", nullable = false, unique = true)
     private Long id;
     @Column(name="id_customer", nullable = false)
@@ -19,7 +19,7 @@ public class Order {
     private LocalDate sellDate;
     @OneToOne
     private Customer customer;
-    @OneToMany(mappedBy = "product_order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<ProductOrder> productOrderList = new ArrayList<>();
 

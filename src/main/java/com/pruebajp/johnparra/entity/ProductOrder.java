@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name="product_order")
 public class ProductOrder {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_product_order", nullable = false, unique = true)
     private Long id;
     @Column(name="id_product", nullable = false)
@@ -16,10 +16,10 @@ public class ProductOrder {
     @Column(name="id_order", nullable = false)
     private Long idOrder;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "productOrder", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Product> productList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private Order order;
 
     public ProductOrder() {
